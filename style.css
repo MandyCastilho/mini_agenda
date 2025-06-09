@@ -2,7 +2,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(120deg, #e0c3fc, #8ec5fc);
+  background: linear-gradient(135deg, #22005f 0%, #cc4f9f 50%, #00a819 100%);
   margin: 0;
   padding: 0;
   display: flex;
@@ -16,14 +16,15 @@ body {
   margin-top: 50px;
   padding: 2rem;
   border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 25px rgba(34, 0, 95, 0.3), 0 0 15px #cc4f9f;
   width: 90%;
   max-width: 500px;
 }
 
 h1 {
   text-align: center;
-  color: #4a148c;
+  color: #22005f;
+  text-shadow: 1px 1px 3px #cc4f9f;
 }
 
 form {
@@ -36,18 +37,34 @@ input, button {
   padding: 10px;
   font-size: 1rem;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid #cc4f9f;
+  box-shadow: inset 0 0 5px #e4f91f;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: #00a819;
+  box-shadow: 0 0 8px #00a819;
 }
 
 button {
-  background-color: #4a148c;
+  background-color: #22005f;
   color: white;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 168, 25, 0.5);
 }
 
 button:hover {
-  background-color: #6a1b9a;
+  background-color: #cc4f9f;
+  box-shadow: 0 6px 12px rgba(204, 79, 159, 0.7);
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 6px rgba(204, 79, 159, 0.5);
 }
 
 ul {
@@ -57,19 +74,34 @@ ul {
 }
 
 li {
-  background-color: #f3e5f5;
+  background-color: #e4f91f;
   padding: 10px;
   margin-bottom: 10px;
-  border-left: 5px solid #4a148c;
+  border-left: 5px solid #22005f;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #22005f;
+  box-shadow: 0 2px 6px rgba(34, 0, 95, 0.15);
+  transition: background-color 0.3s ease;
+}
+
+li:hover {
+  background-color: #cc4f9f;
+  color: white;
 }
 
 li button {
   background: transparent;
   border: none;
-  color: #c62828;
+  color: #00a819;
   font-weight: bold;
   cursor: pointer;
+  transition: color 0.3s ease;
 }
+
+li button:hover {
+  color: #e4f91f;
+  text-shadow: 0 0 5px #e4f91f;
+}
+
