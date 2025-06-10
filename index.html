@@ -19,14 +19,26 @@
 
     <h1>📅 Mini Agenda</h1>
 
-    <form id="form-agenda">
+     <form id="form-agenda">
       <input type="date" id="data" required />
       <input type="text" id="descricao" placeholder="Descrição do compromisso" required />
+
+      <select id="prioridade" required>
+        <option value="" disabled selected>Prioridade</option>
+        <option value="Alta">Alta 🔴</option>
+        <option value="Média">Média 🟠</option>
+        <option value="Baixa">Baixa 🟢</option>
+      </select>
+      
       <button type="submit">Adicionar</button>
     </form>
-    
-    <ul id="lista-compromissos"></ul>
 
+    <div class="filtro">
+      <label for="filtro-data">Filtrar por data:</label>
+      <input type="date" id="filtro-data" />
+    </div>
+
+    <ul id="lista-compromissos"></ul>
   </div>
 
   <script src="script.js"></script>
