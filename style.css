@@ -67,6 +67,17 @@ button:active {
   box-shadow: 0 3px 6px rgba(204, 79, 159, 0.5);
 }
 
+.filtro {
+  margin-top: 20px;
+  text-align: center;
+}
+
+select {
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
 ul {
   list-style: none;
   padding: 0;
