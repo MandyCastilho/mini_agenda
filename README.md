@@ -45,46 +45,6 @@ O objetivo deste projeto é oferecer uma solução prática para organização d
 
 ---
 
-## 🖥️ Demonstração
-
-Basta abrir o arquivo `index.html` em qualquer navegador moderno.
-
-> 💡 **Dica:** Para que as notificações funcionem corretamente, é necessário permitir notificações no navegador.
-
----
-
-## 📂 Estrutura de Arquivos
-
-```bash
-mini-agenda/
-│
-├── index.html        # Estrutura da aplicação
-├── style.css         # Estilos e layout
-├── script.js         # Lógica da aplicação
-├── img/
-│   └── favicon.png   # Ícone do site
-└── README.md         # Documentação do projeto
-```
-
----
-
-## ⚙️ Como Usar
-
-1. Clone este repositório ou faça o download dos arquivos
-2. Abra o arquivo `index.html` no navegador
-3. Preencha:
-
-   * A data do compromisso
-   * A descrição
-   * A prioridade
-4. Clique em **Adicionar**
-5. Use o filtro por data para visualizar compromissos específicos
-6. Remova compromissos quando necessário
-
-Todos os dados ficam salvos automaticamente no navegador.
-
----
-
 ## 🎨 Interface & UX
 
 * Design limpo e moderno
