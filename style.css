@@ -175,22 +175,25 @@ li button:hover {
 }
 
 .alta {
-  background: rgba(255, 0, 0, 0.2);
-  color: #ff4d4d;
+  background: rgba(255, 48, 48, 0.192);
+  color: red;
   padding: 3px 8px;
   border-radius: 8px;
+  font-weight: 700;
 }
 
 .media {
-  background: rgba(255, 165, 0, 0.2);
+  background: rgba(255, 155, 88, 0.2);
   color: orange;
   padding: 3px 8px;
   border-radius: 8px;
+  font-weight: 700;
 }
 
 .baixa {
-  background: rgba(0, 255, 0, 0.2);
-  color: #00ff88;
+  background: rgba(82, 247, 82, 0.2);
+  color: green;
   padding: 3px 8px;
   border-radius: 8px;
+  font-weight: 700;
 }
