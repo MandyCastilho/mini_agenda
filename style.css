@@ -139,17 +139,13 @@ ul {
 li {
   background: rgba(255,255,255,0.1);
   backdrop-filter: blur(6px);
-
   padding: 14px 18px;
   margin-bottom: 12px;
-
   border-radius: 14px;
   border: 1px solid rgba(255,255,255,0.2);
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   transition: all 0.3s ease;
   transition: transform 0.2s ease;
 }
