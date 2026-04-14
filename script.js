@@ -7,33 +7,33 @@ const filtroData = document.getElementById("filtro-data");
 
 let compromissos = JSON.parse(localStorage.getItem("compromissos")) || [];
 
-// Função para salvar no localStorage
+// Salvar no localStorage
 function salvarCompromissos() {
   localStorage.setItem("compromissos", JSON.stringify(compromissos));
 }
 
-// Ordenar por data
+// Ordenar por data 
 function ordenarPorData(lista) {
-  return lista.sort((a, b) => new Date(a.data) - new Date(b.data));
+  return lista.sort((a, b) => a.data.localeCompare(b.data));
 }
 
-// Mostrar notificação
+// Notificação
 function mostrarNotificacao(descricao) {
   if (Notification.permission === "granted") {
     new Notification("Novo compromisso adicionado!", {
       body: descricao,
-      icon: "📅"
+      icon: "img/favicon.png"
     });
   }
 }
 
-// 👉 Função para formatar a data no estilo brasileiro
+// Formatar data BR
 function formatarDataBR(dataISO) {
   const [ano, mes, dia] = dataISO.split("-");
   return `${dia}/${mes}/${ano}`;
 }
 
-// Renderizar a lista de compromissos
+// Renderizar lista
 function renderizarCompromissos() {
   lista.innerHTML = "";
   const filtro = filtroData.value;
@@ -43,32 +43,44 @@ function renderizarCompromissos() {
     filtrados = filtrados.filter(item => item.data === filtro);
   }
 
-  ordenarPorData(filtrados).forEach((item, index) => {
+  if (filtrados.length === 0) {
+    lista.innerHTML = "<li>Nenhum compromisso encontrado 😢</li>";
+    return;
+  }
+
+  ordenarPorData(filtrados).forEach((item) => {
     const dataFormatada = formatarDataBR(item.data);
+
+    const classePrioridade =
+      item.prioridade === "Alta"
+        ? "alta"
+        : item.prioridade === "Média"
+        ? "media"
+        : "baixa";
+
     const li = document.createElement("li");
     li.innerHTML = `
-      <span><strong>${dataFormatada}</strong> - ${item.descricao} 
-      <em style="color:${
-        item.prioridade === "Alta"
-          ? "red"
-          : item.prioridade === "Média"
-          ? "orange"
-          : "green"
-      }">[${item.prioridade}]</em></span>
-      <button onclick="removerCompromisso(${index})">🗑️</button>
+      <span>
+        <strong>${dataFormatada}</strong> - ${item.descricao}
+        <em class="${classePrioridade}">[${item.prioridade}]</em>
+      </span>
+      <button onclick="removerCompromisso(${item.id})">🗑️</button>
     `;
+
     lista.appendChild(li);
   });
 }
 
-// Remover compromisso
-function removerCompromisso(index) {
-  compromissos.splice(index, 1);
+// Remover com confirmação 
+function removerCompromisso(id) {
+  if (!confirm("Tem certeza que deseja excluir?")) return;
+
+  compromissos = compromissos.filter(item => item.id !== id);
   salvarCompromissos();
   renderizarCompromissos();
 }
 
-// Evento ao submeter o formulário
+// Submit
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -78,17 +90,23 @@ form.addEventListener("submit", (e) => {
 
   if (!data || !descricao || !prioridade) return;
 
-  compromissos.push({ data, descricao, prioridade });
+  compromissos.push({
+    id: Date.now(), 
+    data,
+    descricao,
+    prioridade
+  });
+
   salvarCompromissos();
   renderizarCompromissos();
   mostrarNotificacao(descricao);
   form.reset();
 });
 
-// Evento ao mudar o filtro de data
+// Filtro
 filtroData.addEventListener("change", renderizarCompromissos);
 
-// Carrega dados ao iniciar
+// Inicialização
 document.addEventListener("DOMContentLoaded", () => {
   if (Notification.permission !== "granted") {
     Notification.requestPermission();
