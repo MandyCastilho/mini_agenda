@@ -59,6 +59,7 @@ function renderizarCompromissos() {
         : "baixa";
 
     const li = document.createElement("li");
+    li.classList.add("animar-entrada"); 
     li.innerHTML = `
       <span>
         <strong>${dataFormatada}</strong> - ${item.descricao}
@@ -75,9 +76,15 @@ function renderizarCompromissos() {
 function removerCompromisso(id) {
   if (!confirm("Tem certeza que deseja excluir?")) return;
 
-  compromissos = compromissos.filter(item => item.id !== id);
-  salvarCompromissos();
-  renderizarCompromissos();
+  const item = document.querySelector(`button[onclick="removerCompromisso(${id})"]`).parentElement;
+
+  item.classList.add("animar-saida");
+
+  setTimeout(() => {
+    compromissos = compromissos.filter(c => c.id !== id);
+    salvarCompromissos();
+    renderizarCompromissos();
+  }, 300);
 }
 
 // Submit
